@@ -4,11 +4,150 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <title>SMNVDA</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>SMNVDA — процессы, AI и автоматизация</title>
   </head>
 
   <body>
-    <h1>SMNVDA</h1>
-    <p>Процессы • AI • Автоматизация вапв</p>
+    <main class="page">
+      <header class="hero">
+        <p class="eyebrow">SMNVDA</p>
+        <h1>Процессная архитектура, AI и автоматизация</h1>
+        <p class="subtitle">
+          Проектирую процессы, архитектуру автоматизации и AI-инструменты для бизнес-задач.
+        </p>
+
+        <div class="actions">
+          <a href="#cases">Кейсы</a>
+          <a href="#lab" class="secondary">AI Lab</a>
+        </div>
+      </header>
+
+      <section class="grid" id="cases">
+        <article class="card">
+          <h2>Process Architecture</h2>
+          <p>BPMN, governance, регламенты, роли, правила и контрольные точки.</p>
+        </article>
+
+        <article class="card">
+          <h2>AI Automation</h2>
+          <p>AI-агенты, n8n, Telegram-боты, обработка транскрибаций и генерация артефактов.</p>
+        </article>
+
+        <article class="card">
+          <h2>1С / Enterprise</h2>
+          <p>Постановка задач, интеграции, 1С ERP, 1С ДО и автоматизация внутренних процессов.</p>
+        </article>
+      </section>
+
+      <section class="lab" id="lab">
+        <h2>SMNVDA Lab</h2>
+        <p>
+          Экспериментальная зона для AI/BPM-инструментов, шаблонов, архитектурных заметок и рабочих прототипов.
+        </p>
+      </section>
+    </main>
   </body>
 </html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  .hero {
+    padding: 96px 0 72px;
+  }
+
+  .eyebrow {
+    color: #38bdf8;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  h1 {
+    max-width: 850px;
+    font-size: clamp(42px, 7vw, 76px);
+    line-height: 0.95;
+    margin: 0;
+  }
+
+  .subtitle {
+    max-width: 680px;
+    margin-top: 24px;
+    font-size: 22px;
+    line-height: 1.5;
+    color: #cbd5e1;
+  }
+
+  .actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .actions a {
+    padding: 14px 20px;
+    border-radius: 12px;
+    background: #38bdf8;
+    color: #020617;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .actions .secondary {
+    background: transparent;
+    color: #e5e7eb;
+    border: 1px solid #334155;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .card {
+    padding: 24px;
+    border: 1px solid #1e293b;
+    border-radius: 20px;
+    background: #111827;
+  }
+
+  .card h2 {
+    margin-top: 0;
+  }
+
+  .card p,
+  .lab p {
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  .lab {
+    margin-top: 64px;
+    padding: 32px;
+    border-radius: 24px;
+    background: #020617;
+    border: 1px solid #1e293b;
+  }
+
+  @media (max-width: 800px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero {
+      padding-top: 56px;
+    }
+  }
+</style>
