@@ -1,153 +1,91 @@
 ---
+import Header from "../components/Header.astro";
+import Sidebar from "../components/Sidebar.astro";
+import '../styles/styles.css'
 ---
 
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>SMNVDA — процессы, AI и автоматизация</title>
-  </head>
 
+<!DOCTYPE html>
+<html
+>
+  <Header title="Sam Bernstein" />
   <body>
-    <main class="page">
-      <header class="hero">
-        <p class="eyebrow">SMNVDA</p>
-        <h1>Процессная архитектура, AI и автоматизация</h1>
-        <p class="subtitle">
-          Проектирую процессы, архитектуру автоматизации и AI-инструменты для бизнес-задач.
-        </p>
-
-        <div class="actions">
-          <a href="#cases">Кейсы</a>
-          <a href="#lab" class="secondary">AI Lab</a>
+    <div class="content">
+      <Sidebar selectedItem="home" />
+      <nav class="main">
+        <div class="container">
+          <main class="fold-content-container">
+            <div class="fold-content">
+              <h1>Hi, I'm Sam.<br />I build things for the web.</h1>
+              <p class="lead">
+                Experienced backend developer and cloud architect. A proactive team member dedicated to continuous learning, problem-solving, and aiding teammates in achieving quicker outcomes.
+              </p>
+            </div>
+            <a href="mailto:sam@overview.co.il	" class="button w-button">Contact</a>
+          </main>
+          <div class="projects-section">
+            <!-- Software Development -->
+            <a href="/software-development" class="projects-container">
+              <div class="single-projects-category">
+                <div class="projects-category-image-container">
+                  <img src="./assets/browser.svg" loading="lazy" alt="" class="projects-category-image" />
+                </div>
+              </div>
+              <div class="single-projects-content">
+                <h4>Software Development</h4>
+                <div class="tech-tools-container">
+                  <div class="mini-label-white gray-color">Technologies &amp; tools</div>
+                  <div class="chips-container chips-container-small-width">
+                    <div class="single-chip small-chip">React</div>
+                    <div class="single-chip small-chip">Next.js</div>
+                    <div class="single-chip small-chip">Node.js</div>
+                    <div class="single-chip small-chip">MongoDB</div>
+                    <div class="single-chip small-chip">Heroku</div>
+                    <div class="single-chip small-chip">RabbitMQ</div>
+                    <div class="single-chip small-chip">Express.js</div>
+                    <div class="single-chip small-chip">TypeScript</div>
+                    <div class="single-chip small-chip">NestJS</div>
+                    <div class="single-chip small-chip">Angular</div>
+                    <div class="single-chip small-chip">Postgres</div>
+                    <div class="single-chip small-chip">Linode</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- DevOps & Cloud -->
+            <a href="/devops" class="projects-container">
+              <div class="single-projects-category">
+                <div class="projects-category-image-container devops-img">
+                  <img src="./assets/database.svg" loading="lazy" alt="" class="projects-category-image" />
+                </div>
+              </div>
+              <div class="single-projects-content">
+                <h4>DevOps &amp;&nbsp;Cloud</h4>
+                <div class="tech-tools-container">
+                  <div class="mini-label-white gray-color">Technologies &amp; tools</div>
+                  <div class="chips-container chips-container-small-width">
+                    <div class="single-chip small-chip">Terraform</div>
+                    <div class="single-chip small-chip">Azure</div>
+                    <div class="single-chip small-chip">AWS</div>
+                    <div class="single-chip small-chip">Docker</div>
+                    <div class="single-chip small-chip">Kubernetes</div>
+                    <div class="single-chip small-chip">GitLab CI/CD</div>
+                    <div class="single-chip small-chip">RKE</div>
+                    <div class="single-chip small-chip">Node.js</div>
+                    <div class="single-chip small-chip">RabbitMQ</div>
+                    <div class="single-chip small-chip">Linux</div>
+                    <div class="single-chip small-chip">Bash</div>
+                    <div class="single-chip small-chip">Grafana</div>
+                    <div class="single-chip small-chip">Prometheus</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
-      </header>
+      </nav>
+    </div>
 
-      <section class="grid" id="cases">
-        <article class="card">
-          <h2>Process Architecture</h2>
-          <p>BPMN, governance, регламенты, роли, правила и контрольные точки.</p>
-        </article>
-
-        <article class="card">
-          <h2>AI Automation</h2>
-          <p>AI-агенты, n8n, Telegram-боты, обработка транскрибаций и генерация артефактов.</p>
-        </article>
-
-        <article class="card">
-          <h2>1С / Enterprise</h2>
-          <p>Постановка задач, интеграции, 1С ERP, 1С ДО и автоматизация внутренних процессов.</p>
-        </article>
-      </section>
-
-      <section class="lab" id="lab">
-        <h2>SMNVDA Lab</h2>
-        <p>
-          Экспериментальная зона для AI/BPM-инструментов, шаблонов, архитектурных заметок и рабочих прототипов.
-        </p>
-      </section>
-    </main>
+    <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
   </body>
 </html>
-
-<style>
-  :global(body) {
-    margin: 0;
-    font-family: Inter, Arial, sans-serif;
-    background: #0f172a;
-    color: #e5e7eb;
-  }
-
-  .page {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 48px 24px;
-  }
-
-  .hero {
-    padding: 96px 0 72px;
-  }
-
-  .eyebrow {
-    color: #38bdf8;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-  }
-
-  h1 {
-    max-width: 850px;
-    font-size: clamp(42px, 7vw, 76px);
-    line-height: 0.95;
-    margin: 0;
-  }
-
-  .subtitle {
-    max-width: 680px;
-    margin-top: 24px;
-    font-size: 22px;
-    line-height: 1.5;
-    color: #cbd5e1;
-  }
-
-  .actions {
-    display: flex;
-    gap: 16px;
-    margin-top: 36px;
-  }
-
-  .actions a {
-    padding: 14px 20px;
-    border-radius: 12px;
-    background: #38bdf8;
-    color: #020617;
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  .actions .secondary {
-    background: transparent;
-    color: #e5e7eb;
-    border: 1px solid #334155;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-
-  .card {
-    padding: 24px;
-    border: 1px solid #1e293b;
-    border-radius: 20px;
-    background: #111827;
-  }
-
-  .card h2 {
-    margin-top: 0;
-  }
-
-  .card p,
-  .lab p {
-    color: #94a3b8;
-    line-height: 1.6;
-  }
-
-  .lab {
-    margin-top: 64px;
-    padding: 32px;
-    border-radius: 24px;
-    background: #020617;
-    border: 1px solid #1e293b;
-  }
-
-  @media (max-width: 800px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-
-    .hero {
-      padding-top: 56px;
-    }
-  }
-</style>
