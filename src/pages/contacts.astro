@@ -1,0 +1,54 @@
+---
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import content from '../data/content.json';
+import '../styles/styles.css'
+
+const { profile, contacts } = content;
+
+const isPlaceholder = (value: string) => value.trim().startsWith('[');
+
+const rows = [
+  { label: 'Telegram', value: contacts.telegram, href: isPlaceholder(contacts.telegram) ? null : contacts.telegram },
+  { label: 'Телефон', value: contacts.phone, href: isPlaceholder(contacts.phone) ? null : `tel:${contacts.phone}` },
+  { label: 'Почта', value: contacts.email, href: isPlaceholder(contacts.email) ? null : `mailto:${contacts.email}` },
+  { label: 'Резюме (hh.ru)', value: contacts.resumeUrl, href: isPlaceholder(contacts.resumeUrl) ? null : contacts.resumeUrl },
+];
+---
+
+<!DOCTYPE html>
+<html
+>
+  <Header title={`Контакты | ${profile.name}`} />
+  <body>
+    <div class="content">
+        <Sidebar selectedItem="contacts" />
+      <nav class="main">
+        <div class="container">
+          <div class="back-nav-container">
+            <a href="/" class="back-nav-button w-inline-block"
+              ><img src="/assets/back.svg" loading="lazy" alt="" class="back-nav-img" />
+              <div>Back</div></a
+            >
+          </div>
+          <div class="content-container">
+            <h1>Контакты</h1>
+            <div class="single-item">
+              <div class="project-desc project-desc-list w-richtext">
+                <ul role="list">
+                  {rows.map(row => (
+                    <li>
+                      {row.label}: {row.href ? <a href={row.href}>{row.value}</a> : row.value}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+  </body>
+</html>
