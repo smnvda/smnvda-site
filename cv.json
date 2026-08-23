@@ -1,364 +1,385 @@
 {
   "basics": {
-    "name": "John Doe",
-    "label": "Junior Full Stack Developer",
-    "image": "/me_avatar.jpg",
-    "email": "john.doe@example.com",
-    "phone": "+1 555-555-5555",
-    "url": "https://johndoe.dev",
-    "summary": "Junior Full Stack Developer with a passion for building web applications. Currently seeking opportunities to further develop my skills in a professional setting.",
+    "name": "Дмитрий Семенов",
+    "label": "Бизнес-архитектор",
+    "image": "/smnvda.jpg",
+    "email": "smnda@ya.ru",
+    "phone": "+7 (926) 106-90-00",
+    "url": "https://smnvda.ru",
+    "summary": "Специализируюсь на архитектуре цифровых процессов и внутренних платформ в производственных и операционных контурах. Имею опыт выстраивания аналитических функций и управления НСИ как элементов цифровой архитектуры. Работаю системно, ориентирован на долгосрочную устойчивость и масштабируемость решений. Член ABPMP Russia, участвую в развитии процессного подхода.",
     "theme": "default",
     "location": {
       "address": "",
-      "postalCode": "10001",
-      "city": "Auckland",
-      "countryCode": "NZ",
-      "region": "New Zealand"
+      "postalCode": "",
+      "city": "Москва",
+      "countryCode": "RU",
+      "region": "Россия"
     },
     "profiles": [
       {
-        "network": "LinkedIn",
-        "username": "john-doe",
-        "url": "https://linkedin.com/in/john-doe"
-      },
-      {
-        "network": "X",
-        "username": "john-doe",
-        "url": "https://x.com/john-doe"
-      },
-      {
-        "network": "GitHub",
-        "username": "johndoe",
-        "url": "https://github.com/johndoe"
+        "network": "Telegram",
+        "username": "Semenovdmi",
+        "url": "https://t.me/Semenovdmi"
       }
     ]
   },
   "work": [
     {
-      "name": "Tech Startup",
-      "position": "Junior Web Developer",
-      "location_type": "On site",
-      "location": "Auckland, New Zealand",
-      "url": "https://techstartup.com",
-      "startDate": "2024-01-01",
+      "name": "ГК Промомед",
+      "position": "Бизнес-архитектор",
+      "location": "Москва",
+      "url": "https://promomed.ru/",
+      "startDate": "2023-11-01",
       "endDate": null,
-      "summary": "Developing and maintaining web applications using JavaScript, HTML, and CSS. Collaborating with the team to implement new features and fix bugs.",
-      "highlights": [
-        "Improved website performance by optimizing code"
-      ],
+      "summary": "Руководитель проектов цифровизации в сочетании ролей РП и бизнес-аналитика (архитекторская позиция). Прямое руководство командой бизнес-аналитиков и службой НСИ.",
       "responsibilities": [
-        "Collaborated with senior developers to design and implement web applications using modern JavaScript frameworks.",
-        "Assisted in debugging and optimizing front-end code to ensure smooth user experiences.",
-        "Participated in code reviews and contributed to improving coding standards within the team."
+        "Проектирование целевой архитектуры цифровых процессов и платформ",
+        "Планирование и координация работ по цифровым инициативам, управление бэклогом задач и приоритизация изменений",
+        "Координация подразделений с ИТ, подрядчиками и бизнес-подразделениями в рамках цифровых инициатив",
+        "Прямое руководство командой бизнес-аналитиков и службой НСИ: планирование загрузки, постановка задач, контроль выполнения",
+        "Сбор и формализация бизнес-требований, описание процессов и архитектуры в нотациях BPMN и ArchiMate",
+        "Приёмка доработок, сопровождение внедрения и запуск в эксплуатацию"
       ],
       "achievements": [
-        "Developing and maintaining web applications using JavaScript, HTML, and CSS. Collaborating with the team to implement new features and fix bugs."
+        "Реализованы проекты: документооборот (1С ДО), процессы R&D от идеи до ГЛС с разработкой и внедрением АСУП (Advanta + собственная система) и LIMS",
+        "Выстроена работа с KOL — от планирования мероприятий до расчётов с контрагентом",
+        "Разработана и внедрена собственная система управления документацией (eQMS)",
+        "Спроектирован и запущен контур технической поддержки цифровых сервисов (Jira, 5 команд поддержки, более 10 участников)",
+        "Обеспечена управляемость и прозрачность ключевых R&D и регуляторных процессов",
+        "Нормализация и стабилизация НСИ стали платформой для внедрения BI, S&OP и demand-планирования",
+        "Снижены затраты за счёт цифровизации наиболее загруженных процессов"
       ],
       "skills": [
-        "React",
-        "Tailwind",
-        "GitHub"
-      ]
+        "BPMN",
+        "ArchiMate",
+        "1С",
+        "Jira",
+        "НСИ"
+      ],
+      "location_type": ""
     },
     {
-      "name": "Innovative Solutions",
-      "position": "Junior Software Developer",
-      "location_type": "Hybrid",
-      "location": "Wellington, New Zealand",
-      "url": "https://innovativesolutions.com",
-      "startDate": "2022-06-01",
-      "endDate": "2023-06-01",
-      "summary": "Assisting in the development and maintenance of software applications using Python and Django. Collaborating with cross-functional teams to ensure quality and timely delivery of software solutions.",
-      "highlights": [
-        "Contributed to a major project that streamlined internal workflows, improving efficiency by 30%"
-      ],
+      "name": "Vig Trans",
+      "position": "Бизнес-аналитик",
+      "location": "Москва",
+      "url": "",
+      "startDate": "2022-01-01",
+      "endDate": "2023-11-01",
+      "summary": "Управление портфелем проектов улучшений и автоматизация новых логистических продуктов.",
       "responsibilities": [
-        "Developed and maintained backend services using Python and Django.",
-        "Worked closely with front-end developers to integrate user-facing elements with server-side logic.",
-        "Participated in daily stand-ups and bi-weekly sprint planning meetings to ensure alignment with project goals."
+        "Управление портфелем проектов улучшений",
+        "Автоматизация новых продуктов — от идеи до поддержки после внедрения",
+        "Организация доработок учётной системы: сбор и формализация требований, постановка задач на разработку"
       ],
       "achievements": [
-        "Successfully implemented a feature that enhanced user authentication, improving security measures."
+        "Выстроены сквозные процессы новых логистических продуктов: от пилота до внедрения, автоматизации и операционной поддержки",
+        "Адаптированы операционные процессы компании к резкому изменению внешнеполитической и экономической ситуации",
+        "Выстроен процесс разработки и внедрения изменений: сбор требований, приоритизация, разработка, тестирование, ввод в эксплуатацию, поддержка",
+        "Обеспечена связка бизнеса, ИТ и разработки при реализации изменений"
       ],
       "skills": [
-        "Python",
-        "Django",
-        "SQL",
-        "Git"
-      ]
+        "Автоматизация процессов",
+        "Управление проектами",
+        "ВЭД"
+      ],
+      "location_type": ""
     },
     {
-      "name": "Web Agency",
-      "position": "Intern Web Developer",
-      "location_type": "Remote",
-      "location": "Sydney, Australia",
-      "startDate": "2022-06-01",
-      "endDate": "2022-12-01",
-      "summary": "Assisted in developing client websites and applications. Gained hands-on experience with front-end and back-end technologies.",
-      "highlights": [
-        "Completed several client projects successfully"
+      "name": "Энергон",
+      "position": "Бизнес-аналитик",
+      "location": "Москва",
+      "url": "",
+      "startDate": "2020-11-01",
+      "endDate": "2021-08-01",
+      "summary": "Описание бизнес-процессов для последующей автоматизации и управление документацией.",
+      "responsibilities": [
+        "Описание бизнес-процессов для автоматизации: сбор требований, формализация, выработка предложений по улучшению",
+        "Управление документацией и регламентация"
+      ],
+      "achievements": [
+        "Внедрена BPM-система «Первая форма»",
+        "Развёрнута и запущена корпоративная база знаний",
+        "Описаны процессы back-офиса и склада",
+        "Инициирован проект внедрения PIM-системы (PimCore)"
       ],
       "skills": [
-        "HTML",
-        "CSS"
-      ]
-    }
-  ],
-  "volunteer": [
+        "BPM",
+        "Регламентация",
+        "PIM"
+      ],
+      "location_type": ""
+    },
     {
-      "organization": "Local Coding Club",
-      "position": "Volunteer",
-      "url": "https://codingclub.com/",
-      "startDate": "2021-01-01",
-      "endDate": "2022-01-01",
-      "summary": "Helped organize coding workshops and mentored new members.",
-      "highlights": [
-        "Awarded 'Volunteer of the Month'"
-      ]
+      "name": "Мультитранслогистик",
+      "position": "Ведущий специалист по процессному управлению",
+      "location": "Москва",
+      "url": "",
+      "startDate": "2017-08-01",
+      "endDate": "2020-11-01",
+      "summary": "Описание и анализ процессов, автоматизация и обучение сотрудников.",
+      "responsibilities": [
+        "Описание и анализ процессов",
+        "Создание и поддержание в актуальном состоянии рабочей документации",
+        "Обучение сотрудников: на рабочем месте, презентации, программы обучения",
+        "Автоматизация процессов силами штатных и внештатных разработчиков, Agile-подход, разработка в рамках интеграции с клиентами",
+        "Организация и контроль работы разработки и IT-поддержки на аутсорсе"
+      ],
+      "achievements": [
+        "Внедрена система управления изменениями",
+        "Внедрён ЭДО: автоматизация в 1С и интеграция документов у клиента",
+        "Внедрена система Help Desk",
+        "Разработан и внедрён процесс «сертификации товаров»",
+        "Участвовал в разработке решения для маркировки обуви (процесс и инструменты автоматизации)"
+      ],
+      "skills": [
+        "1С",
+        "ЭДО",
+        "Agile",
+        "Help Desk"
+      ],
+      "location_type": ""
+    },
+    {
+      "name": "АШАН, Сеть Гипермаркетов",
+      "position": "Аудитор",
+      "location": "Россия",
+      "url": "https://www.auchan.ru",
+      "startDate": "2016-01-01",
+      "endDate": "2017-05-01",
+      "summary": "Внутренний аудит на соответствие требованиям компании и законодательства, оценка и улучшение процессов.",
+      "responsibilities": [
+        "Внутренний аудит на соответствие требованиям компании и законодательства: разработка программы аудита, поиск причин и способов устранения несоответствий, составление отчётов",
+        "Оценка процессов: критерии, анализ затрат, рекомендации по улучшению",
+        "Разработка рекомендаций по улучшению внутренних процедур",
+        "Обучение сотрудников компании"
+      ],
+      "achievements": [
+        "Проведён аудит логистических процессов с выявлением потерь и причин потерь при перемещении товаров со склада",
+        "Обучено более 200 сотрудников в центральном офисе и магазинах"
+      ],
+      "skills": [
+        "Внутренний аудит",
+        "Логистика"
+      ],
+      "location_type": ""
+    },
+    {
+      "name": "Азбука вкуса",
+      "position": "Аудитор",
+      "location": "Россия",
+      "url": "https://www.azbukavkusa.ru",
+      "startDate": "2014-07-01",
+      "endDate": "2015-06-01",
+      "summary": "Внутренний аудит и управление процессом контроля качества собственной торговой марки.",
+      "responsibilities": [
+        "Внутренний аудит первой и второй стороны, подготовка отчётов, разработка и контроль корректирующих действий",
+        "Управление процессом контроля качества СТМ: аудит площадок, сбор и консолидация информации",
+        "Обучение сотрудников, участие в разработке обучающих материалов",
+        "Подготовка к внешним проверкам и аудитам"
+      ],
+      "achievements": [
+        "Успешно пройден аудит HACCP производства и центрального склада"
+      ],
+      "skills": [
+        "Аудит",
+        "HACCP",
+        "Контроль качества"
+      ],
+      "location_type": ""
+    },
+    {
+      "name": "ОАО «Глобалстрой-Инжиниринг»",
+      "position": "Специалист отдела системного менеджмента",
+      "location": "Москва",
+      "url": "https://www.globse.com/",
+      "startDate": "2012-08-01",
+      "endDate": "2014-01-01",
+      "summary": "Разработка и актуализация документации интегрированной системы менеджмента холдинга.",
+      "responsibilities": [
+        "Разработка и актуализация документации ИСМ холдинга (ISO 9001, 18000, 14000)",
+        "Проведение внутреннего аудита ИСМ предприятий-участников холдинга",
+        "Разработка процедур для проектов компании (в роли разработчика и консультанта), мониторинг исполнения"
+      ],
+      "achievements": [
+        "Регулярная отчётность по результатам аудита руководству компании"
+      ],
+      "skills": [
+        "ISO 9001",
+        "ISO 14001",
+        "СМК"
+      ],
+      "location_type": ""
     }
   ],
+  "volunteer": [],
   "education": [
     {
-      "institution": "State University",
-      "url": "https://stateuniversity.edu",
-      "area": "Computer Science",
-      "studyType": "Bachelor",
-      "startDate": "2018-09-01",
-      "endDate": "2022-05-01",
-      "score": "3.8",
-      "courses": [
-        "CS101 - Introduction to Computer Science",
-        "CS102 - Data Structures"
-      ]
-    },
-    {
-      "institution": "Tech Institute",
-      "url": "https://techinstitute.edu",
-      "area": "Software Engineering",
-      "studyType": "Master",
-      "startDate": "2020-09-01",
-      "endDate": "2022-12-01",
-      "score": "3.9",
-      "courses": [
-        "SE201 - Advanced Software Development",
-        "SE202 - Software Architecture and Design"
-      ]
-    },
-    {
-      "institution": "City College",
-      "url": "https://citycollege.edu",
-      "area": "Information Technology",
-      "studyType": "Associate Degree",
-      "startDate": "2017-01-01",
-      "endDate": "2019-12-01",
-      "score": "3.7",
-      "courses": [
-        "IT101 - Networking Fundamentals",
-        "IT102 - Database Management Systems"
-      ]
+      "institution": "Российский государственный университет инновационных технологий и предпринимательства",
+      "url": "",
+      "area": "Менеджмент качества — инженер-менеджер по качеству",
+      "studyType": "Высшее",
+      "startDate": "2007-09-01",
+      "endDate": "2012-06-01",
+      "score": "",
+      "courses": []
     }
   ],
   "certificates": [
     {
-      "name": "Full Stack Web Development",
-      "date": "2023-05-01",
-      "issuer": "Online University",
-      "url": "https://onlineuniversity.com/certificates/fullstack"
+      "name": "Моделирование в ArchiMate — Школа бизнес-анализа Андрея Коптелова",
+      "date": "2025-01-01",
+      "issuer": "analyst.su",
+      "url": "https://analyst.su/"
+    },
+    {
+      "name": "BPMN. Нотация, описание, исполняемые процессы — Бизнес-Консоль",
+      "date": "2019-01-01",
+      "issuer": "bpmntraining.ru",
+      "url": "https://bpmntraining.ru/"
+    },
+    {
+      "name": "Работа с людьми, управление проектами — Школа менеджмента Стратоплан",
+      "date": "2017-01-01",
+      "issuer": "stratoplan.ru",
+      "url": "http://stratoplan.ru/"
     }
   ],
   "skills": [
     {
-      "name": "Figma",
-      "level": "Expert",
-      "keywords": [
-        "Design",
-        "UI"
-      ]
+      "name": "BPMN",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "Gitlab",
-      "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
-      ]
+      "name": "ArchiMate",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "HTML",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend"
-      ]
+      "name": "Моделирование бизнес-процессов",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "CSS",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Responsive Design"
-      ]
+      "name": "Бизнес-анализ",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "JavaScript",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Backend",
-        "Fullstack"
-      ]
+      "name": "Оптимизация бизнес-процессов",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "Tailwind",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "CSS Framework",
-        "Responsive Design"
-      ]
+      "name": "Реинжиниринг бизнес-процессов",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "TypeScript",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Backend",
-        "JavaScript Superset"
-      ]
+      "name": "IDEF0",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "Node",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "JavaScript",
-        "Server"
-      ]
+      "name": "Внутренний аудит",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "MySQL",
-      "level": "Intermediate",
-      "keywords": [
-        "Databases",
-        "SQL",
-        "Data Storage",
-        "Backend"
-      ]
+      "name": "Системный подход",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "Git",
-      "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
-      ]
+      "name": "Разработка политик и процедур",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "GitHub",
-      "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code",
-        "Git"
-      ]
+      "name": "Сертификация",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "Next.js",
-      "level": "Beginner",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "React Framework",
-        "SSR",
-        "Static Generation"
-      ]
+      "name": "Обучение персонала",
+      "level": "Продвинутый",
+      "keywords": []
     },
     {
-      "name": "React",
-      "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "JavaScript Library",
-        "UI"
-      ]
+      "name": "MS Visio",
+      "level": "Продвинутый",
+      "keywords": []
+    },
+    {
+      "name": "Bizagi",
+      "level": "Средний",
+      "keywords": []
     }
   ],
   "languages": [
     {
-      "language": "English",
-      "fluency": "Native speaker"
+      "language": "Russian",
+      "fluency": "Родной"
     },
     {
-      "language": "Spanish",
-      "fluency": "Intermediate"
+      "language": "English",
+      "fluency": "B1 — Средний"
     }
   ],
   "interests": [
     {
-      "name": "Technology",
+      "name": "Процессный подход",
       "keywords": [
-        "AI",
-        "Blockchain"
+        "ABPMP Russia",
+        "BPM CBOK"
       ]
     }
   ],
-  "references": [
-    {
-      "name": "Jane Smith",
-      "reference": "Reference…"
-    }
-  ],
+  "references": [],
   "projects": [
     {
-      "name": "Personal Portfolio",
+      "name": "Документооборот (1С ДО)",
       "isActive": false,
-      "description": "A personal portfolio website to showcase my projects and skills.",
+      "description": "Внедрение системы электронного документооборота на базе 1С в фарм-компании — интеграция с ERP и НСИ, устранение ручного дублирования данных.",
       "highlights": [
-        "Built with React and Tailwind CSS",
-        "Includes a blog and contact form"
+        "Формализация бизнес-требований и архитектуры интеграции",
+        "Сопровождение внедрения и запуск в эксплуатацию"
       ],
-      "url": "https://johndoe.dev",
-      "github": "https://github.com"
+      "url": "",
+      "github": ""
     },
     {
-      "name": "Weather App",
-      "isActive": true,
-      "description": "A web application that provides weather information for any location.",
-      "highlights": [
-        "Built with JavaScript and OpenWeatherMap API",
-        "Responsive design"
-      ],
-      "url": "https://weatherapp.com"
-    },
-    {
-      "name": "Task Manager",
-      "isActive": true,
-      "description": "A simple task management app to keep track of daily tasks.",
-      "highlights": [
-        "Built with Node.js and MongoDB",
-        "User authentication and CRUD operations"
-      ],
-      "url": "https://taskmanager.com",
-      "github": "https://github.com"
-    },
-    {
-      "name": "E-commerce Site",
+      "name": "АСУП и LIMS для R&D",
       "isActive": false,
-      "description": "An online store built with Next.js and Stripe for payment processing.",
+      "description": "Разработка и внедрение системы управления проектами R&D (на базе Advanta и собственной разработки) и LIMS для процессов от идеи до готовой лекарственной формы (ГЛС).",
       "highlights": [
-        "Product management and shopping cart functionality",
-        "Secure payment integration"
+        "Проектирование целевой архитектуры процессов R&D",
+        "Обеспечена управляемость и прозрачность регуляторных процессов"
       ],
-      "url": "https://ecommerce.com"
+      "url": "",
+      "github": ""
+    },
+    {
+      "name": "eQMS — собственная система управления документацией",
+      "isActive": false,
+      "description": "Проектирование и внедрение собственной системы электронного управления качеством (eQMS) для регуляторных и производственных процессов.",
+      "highlights": [
+        "Архитектура и приёмка доработок",
+        "Интеграция с процессами R&D и НСИ"
+      ],
+      "url": "",
+      "github": ""
+    },
+    {
+      "name": "Нормализация НСИ",
+      "isActive": false,
+      "description": "Стабилизация и нормализация нормативно-справочной информации как основы для последующего внедрения BI, S&OP и demand-планирования.",
+      "highlights": [
+        "Прямое руководство службой НСИ",
+        "Заложена платформа для BI и планирования спроса"
+      ],
+      "url": "",
+      "github": ""
     }
   ]
 }
