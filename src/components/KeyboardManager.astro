@@ -59,19 +59,6 @@ const profilesInfo = profiles.map(({ network, url }) => {
 });
 ---
 
-<footer id="normal-footer" class="no-print flex flex-col gap-2">
-	<div>
-		Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open the command palette.
-	</div>
-</footer>
-
-<div class="footer-button no-print">
-	<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-command" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#777" fill="none" stroke-linecap="round" stroke-linejoin="round">
-		<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-		<path d="M7 9a2 2 0 1 1 2 -2v10a2 2 0 1 1 -2 -2h10a2 2 0 1 1 -2 2v-10a2 2 0 1 1 2 2h-10"></path>
-	</svg>
-</div>
-
 <div id="hotkeypad" data-placeholder="Search Command" data-info={JSON.stringify(profilesInfo)}></div>
 
 <script>
@@ -122,23 +109,6 @@ const profilesInfo = profiles.map(({ network, url }) => {
 			},
 			...data,
 		]);
-
-		const footerButtons = document.querySelectorAll(".footer-button");
-		footerButtons.forEach((button) => {
-			button.addEventListener("click", () => {
-				var event = new KeyboardEvent("keydown", {
-					key: "K",
-					code: "KeyK",
-					keyCode: 75,
-					which: 75,
-					ctrlKey: true,
-					altKey: false,
-					shiftKey: false,
-					metaKey: false,
-				});
-				document.dispatchEvent(event);
-			});
-		});
 	}
 
 	// Ensure DOM is ready before initialising HotKeyPad
@@ -150,66 +120,6 @@ const profilesInfo = profiles.map(({ network, url }) => {
 </script>
 
 <style>
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-
-	@media (min-width: 601px) {
-		.footer-button {
-			display: none;
-		}
-	}
-
-	@media (max-width: 600px) {
-		#normal-footer {
-			display: none;
-		}
-
-		.footer-button {
-			background: #fff;
-			position: fixed;
-			border: 1px solid #eee;
-			right: 10px;
-			bottom: 10px;
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			cursor: pointer;
-		}
-	}
-
-	footer {
-		background-color: var(--color-button-accent);
-		position: fixed;
-		bottom: 0px;
-		width: 100%;
-		padding-block: 8px;
-		text-align: center;
-		font-size: 0.85rem;
-
-		view-timeline-name: --revealing;
-		view-timeline-axis: block;
-
-		animation: linear 0.3s fadeIn;
-		animation-timeline: --revealing;
-		animation-range: entry 100% cover 10%;
-	}
-
-	kbd {
-		background-color: var(--color-muted);
-		border-radius: 4px;
-		padding: 2px 4px;
-		font-size: 12px;
-	}
-
 	#hotkeypad {
 		--hotkeypad-bg-kbd: var(--color-muted);
 		--hotkeypad-bg-backdrop: var(--color-fill);
