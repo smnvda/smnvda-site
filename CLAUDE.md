@@ -30,11 +30,11 @@ Astro + Tailwind CSS 4 + Alpine.js, статическая сборка, деп�
 - **Хостинг** — GitHub Pages
 - **DNS** — регистратор **Jino.ru** (домен `smnvda.ru`), Cloudflare полностью убран
 
-### Статус на конец сессии
+### Статус: миграция завершена
 - NS-делегация на уровне регистратора переключена на `ns1-4.jino.ru` (было `khalid.ns.cloudflare.com` / `sharon.ns.cloudflare.com`), статус `DELEGATED` — подтверждено в реестре доменных имён
 - A-записи корневого домена в Jino указывают на 4 IP GitHub Pages: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-- Сайт уже открывался на `http://smnvda.ru` (пропагация DNS частично/полностью прошла на момент проверки пользователем), но **HTTPS ещё не подтверждён** — на скриншоте пользователя браузер показывал "Не защищено". Нужно зайти в Settings → Pages и проверить статус DNS check; если он зелёный — включить **Enforce HTTPS** (GitHub сам выпустит сертификат)
-- Если DNS check всё ещё не проходит — смотреть пропагацию на whatsmydns.net (`#NS/smnvda.ru` и `#A/smnvda.ru`), может занимать часы, редко — до суток
+- Сертификат выпущен, **Enforce HTTPS включён** в Settings → Pages — подтверждено пользователем в инкогнито-режиме браузера (`https://smnvda.ru` открывается с валидным сертификатом, замок закрыт)
+- Известное некритичное предупреждение в Settings → Pages: `www.smnvda.ru is improperly configured` — `www` не имеет отдельной записи и попадает под wildcard `*.smnvda.ru` (A, старый сервер), поэтому ведёт не на GitHub Pages. На работу основного домена `smnvda.ru` это не влияет. Чтобы убрать — добавить в Jino отдельную запись `www.smnvda.ru` → CNAME `smnvda.github.io` (не трогая сам wildcard, он нужен другим сервисам)
 
 ### DNS-записи в Jino (⚠️ НЕ трогать почтовые)
 В зоне `smnvda.ru` вперемешку лежат записи для сайта и для почты:
@@ -44,10 +44,11 @@ Astro + Tailwind CSS 4 + Alpine.js, статическая сборка, деп�
 
 ## Дальнейшие шаги (TODO)
 1. Проверить и при необходимости поправить дату начала обучения в `cv.json`
-2. Проверить статус DNS check в Settings → Pages, включить **Enforce HTTPS**, когда станет доступно
-3. Удалить проект в Cloudflare, когда `https://smnvda.ru` заработает стабильно по HTTPS
+2. ~~Проверить статус DNS check в Settings → Pages, включить Enforce HTTPS~~ — сделано, HTTPS работает и принудительно включён
+3. Удалить проект в Cloudflare — `https://smnvda.ru` уже стабильно работает по HTTPS, можно удалять. Требует ручного действия в панели Cloudflare, у Claude туда доступа нет
 4. Дальнейшая адаптация сайта — редактировать `cv.json`; при изменении структуры секций — компоненты в `src/components/sections/`
-5. На GitHub осталось несколько уже смёрженных feature-веток (`add-claude-md`, `fix-pnpm-lockfile`, `fix-skills-chips`, `polish-layout`, `setup-github-pages`, `unify-skills-chip-style`, а также старая `claude/project-analysis-2zj6io`) — GitHub не удалил их автоматически после мёржа. Можно удалить для порядка, они больше не нужны
+5. На GitHub осталось несколько уже смёрженных feature-веток (`add-claude-md`, `fix-pnpm-lockfile`, `fix-skills-chips`, `polish-layout`, `setup-github-pages`, `unify-skills-chip-style`, `update-claude-md`, а также старая `claude/project-analysis-2zj6io`) — GitHub не удалил их автоматически после мёржа. Попытка удалить их через git push --delete из сессии заблокирована прокси (403), а в GitHub MCP-инструментах нет tool для удаления веток — удалить вручную через GitHub → Branches
+6. (опционально) Добавить в Jino запись `www.smnvda.ru` → CNAME `smnvda.github.io`, чтобы убрать предупреждение про www и сайт открывался с www
 
 ## Команды
 ```bash
@@ -65,3 +66,5 @@ npm run build    # astro check + сборка в dist/
 - PR #6 — фикс опечатки в Tailwind-классах чипов Skills (не было рамки/заливки)
 - PR #7 — убран подвал шаблона (атрибуция + подсказка Cmd+K), восстановлен реальный favicon, упрощён title
 - PR #8 — единый стиль чипов между Skills и Experience (цвет текста)
+- PR #9 — обновление CLAUDE.md по итогам сессии миграции хостинга
+- Без PR, влито напрямую в master (коммит `e46457a`) — фикс мобильной версии: `max-sm:!h-auto` в Experience.astro перебивал `!important`-ом inline-стиль высоты от Alpine `x-collapse`, из-за чего на мобильных "Show more" не сворачивал обязанности/достижения
