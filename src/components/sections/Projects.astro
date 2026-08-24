@@ -41,7 +41,21 @@ import { projects } from "@cv";
 						<p class="py-3 text-sm text-skin-base">{description}</p>
 						<ul class="mt-1 text-sm text-skin-muted">
 							{highlights.map((highlight) => {
-								return <li>{highlight}</li>;
+								const separatorIndex = highlight.indexOf(":");
+								const label = separatorIndex > 0 ? highlight.slice(0, separatorIndex).trim() : null;
+								const value = separatorIndex > 0 ? highlight.slice(separatorIndex + 1).trim() : null;
+
+								return (
+									<li>
+										{label ? (
+											<Fragment>
+												<span class="font-semibold">{label}:</span> {value}
+											</Fragment>
+										) : (
+											highlight
+										)}
+									</li>
+								);
 							})}
 						</ul>
 					</div>
