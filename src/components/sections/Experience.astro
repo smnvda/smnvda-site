@@ -105,10 +105,22 @@ const SKILLS_ICONS: Record<string, any> = {
                 {achievements && (
                   <div class="flex flex-col gap-1">
                     <h4>Achievements:</h4>
-                    <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
-                      {achievements.map(achievement => (
-                        <li>{achievement}</li>
-                      ))}
+                    <ul class="achievements text-skin-muted [&>li]:ml-4 [&>li]:list-disc flex list-disc flex-col gap-2">
+                      {achievements.map(achievement => {
+                        const separatorIndex = achievement.indexOf("\u2014")
+                        const title = separatorIndex > 0 ? achievement.slice(0, separatorIndex).trim() : null
+                        const description = separatorIndex > 0 ? achievement.slice(separatorIndex + 1).trim() : null
+
+                        return (
+                          <li>
+                            {title ? (
+                              <Fragment><span class="font-semibold">{title}</span> — {description}</Fragment>
+                            ) : (
+                              achievement
+                            )}
+                          </li>
+                        )
+                      })}
                     </ul>
                   </div>
                 )}
@@ -144,5 +156,10 @@ const SKILLS_ICONS: Record<string, any> = {
 <style>
   li::marker {
     color: var(--color-accent);
+  }
+
+  ul.achievements > li::marker {
+    color: currentColor;
+    font-size: 0.75em;
   }
 </style>
