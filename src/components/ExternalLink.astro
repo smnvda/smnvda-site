@@ -1,0 +1,25 @@
+---
+// Единый паттерн внешней ссылки для всех секций: accent-цвет плюс компактная
+// стрелка ↗ — по ней видно, что название кликабельно. Раньше паттерн жил
+// инлайном только в Experience, теперь один компонент на Experience,
+// ProfessionalActivity и Education, чтобы вариантов оформления не расплодилось.
+//
+// ⚠️ Название принимается пропом, а не слотом, потому что перед стрелкой нужно
+// запретить перенос. Инлайн-блок сам по себе даёт точку переноса (по UAX #14
+// это contingent break), и у длинных названий — «…и предпринимательства» на
+// mobile — стрелка уезжала на новую строку одна. Поэтому последнее слово и
+// стрелка склеиваются в span с whitespace-nowrap: переносится название, а
+// стрелка всегда остаётся при последнем слове.
+interface Props {
+	href: string
+	text: string
+	title?: string
+}
+
+const { href, text, title } = Astro.props
+const words = text.trim().split(/\s+/)
+const tail = words.pop() ?? ""
+const head = words.join(" ")
+---
+
+<a class="text-skin-hue group/link" href={href} title={title} target="_blank">{head && `${head} `}<span class="whitespace-nowrap">{tail}<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline-block w-4 h-4 ml-1 transition-transform translate-y-px shrink-0 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none print:hidden" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd"></path></svg></span></a>
