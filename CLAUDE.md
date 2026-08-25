@@ -52,7 +52,13 @@ Chromium предустановлен, но Playwright из `node_modules` ищ�
 ```js
 chromium.launch({ executablePath: '/opt/pw-browsers/chromium' })
 ```
-Сценарий проверки: `npm run build` → `npx astro preview --port <порт>` → скриншоты секции в 4 комбинациях (desktop 1440 / mobile 390 × light / dark; тему выставлять через `localStorage.setItem('theme', ...)` в `addInitScript`). Обязательно проверять `document.documentElement.scrollWidth == clientWidth` (нет горизонтального overflow). В Experience достижения скрыты за кнопкой «Show more» — её надо кликнуть перед съёмкой.
+Сценарий проверки: `npm run build` → `npx astro preview --port <порт>` → скриншоты секции в 4 комбинациях (desktop 1440 / mobile 390 × light / dark; тему выставлять через `localStorage.setItem('theme', ...)` в `addInitScript`). Обязательно проверять `document.documentElement.scrollWidth == clientWidth` (нет горизонтального overflow). В Experience достижения скрыты за кнопкой «Подробнее» — её надо кликнуть перед съёмкой, причём **у каждой карточки отдельно** (клик по всем кнопкам подряд одним циклом срабатывает не на всех) и дождаться роста высоты карточки через `waitForFunction`.
+
+Ещё две проверки, которые ловят реальные баги этого макета:
+- **стрелка внешней ссылки не осталась на строке одна** — у многострочной ссылки ширина последней строки (`getClientRects()`) должна быть заметно больше ширины иконки;
+- **стрелка не наезжает на абсолютно позиционированный год** в Education — сравнить `getBoundingClientRect()` иконки и `<time>` с `position: absolute` (на mobile год в потоке, проверка не нужна).
+
+⚠️ `boundingBox()` возвращает координаты относительно вьюпорта: для `page.screenshot({ fullPage: true, clip })` нужно либо скроллить в начало страницы перед замером, либо снимать элемент через `locator.screenshot()` — иначе кроп уезжает или падает с «Clipped area is either empty or outside the resulting image».
 
 Ориентиры по высоте секций (desktop 1440 / mobile 390) на текущем содержимом: Experience — первая карточка ~1266 / ~2088 px в раскрытом виде, Projects — ~1468 / ~2696 px, «Экспертиза» — ~368 / ~578 px.
 
@@ -119,7 +125,7 @@ chromium.launch({ executablePath: '/opt/pw-browsers/chromium' })
 
 Внешняя профессиональная активность за пределами основной работы: сообщество, отраслевой конкурс, публикация. Секция в правой колонке **между «Ключевыми трансформациями» и «Образованием»** (`ProfessionalActivity.astro`), заголовок через тот же `Section.astro`, что у соседей.
 
-- **Данные — отдельная секция `professionalActivities` в `cv.json`**, с `work[]` не смешиваются. Поля: `type` (muted type-label), `title`, `role`, опциональные `period`, `periodInline`, `description`, `isbn`. Тип `ProfessionalActivity` в `src/cv.d.ts`. В компоненте контента нет.
+- **Данные — отдельная секция `professionalActivities` в `cv.json`**, с `work[]` не смешиваются. Поля: `type` (muted type-label), `title`, `role`, опциональные `period`, `periodInline`, `description`, `isbn`, `url` (название карточки становится ссылкой). Тип `ProfessionalActivity` в `src/cv.d.ts`. В компоненте контента нет.
 - Иерархия внутри карточки: type-label → название → роль (`font-semibold`) → период → короткое пояснение / ISBN. Ни списков, ни иконок, ни аккордеонов, ни timeline.
 - **Карточки заметно легче, чем в Projects**: та же геометрия (`rounded-md`, `ring-skin-muted`, `bg-skin-button-muted/50`), но `px-4 py-3` вместо `p-5`, без иконки папки и без акцентной заливки. Accent появляется только на hover — рамка `accent 35%` и type-label `accent 70%`; в обычном состоянии type-label — `--color-text-muted`.
 - ⚠️ **`periodInline`** выводит короткий период в строке роли (`Организационный комитет · 3 года`) вместо отдельной строки. Реализация чувствительна к вёрстке: разделитель начинается с **неразрывного пробела**, у `.period-inline` стоит `white-space: nowrap`, а роль и span в `.astro` записаны **в одну строку без переноса** — иначе JSX-пробел между ними даёт точку переноса, и «· 3 года» уезжает на новую строку в одиночку.
@@ -154,6 +160,12 @@ chromium.launch({ executablePath: '/opt/pw-browsers/chromium' })
 
 Замеры: горизонтального overflow нет ни в одной из 4 комбинаций; секция «Образование» стала выше на одну строку — «Стратоплан ↗» переносится, чтобы не сталкиваться с годом.
 
+### Где хранятся ссылки
+
+Все URL лежат в `cv.json`, компоненты их только читают: `work[].url` (7 работодателей), `education[].url` (вуз), `certificates[].url` (3 школы), `professionalActivities[].url` (3 карточки). Пустая строка или отсутствие поля — элемент рендерится обычным текстом, без accent и стрелки. Итого 14 внешних ссылок в едином оформлении.
+
+⚠️ У курса Стратоплана `issuer` — это **подпись домена под строкой**, а не ссылка: она правится отдельно от `url` (в августе 2026 обе переведены с `stratoplan.ru` на `stratoplan-school.com`). У остальных курсов `issuer` тоже держит домен и в ссылку не превращается.
+
 ## Известные допущения в данных (проверить с пользователем)
 
 - Дата начала обучения в вузе в `cv.json` (`education[0].startDate`, сейчас `2007-09-01`) — в резюме с hh.ru указан только год выпуска (2012), начало оценено как типичная 5-летняя программа. Нужно подтвердить у пользователя точную дату.
@@ -181,7 +193,7 @@ chromium.launch({ executablePath: '/opt/pw-browsers/chromium' })
 2. ~~Проверить статус DNS check в Settings → Pages, включить Enforce HTTPS~~ — сделано, HTTPS работает и принудительно включён
 3. Удалить проект в Cloudflare — `https://smnvda.ru` уже стабильно работает по HTTPS, можно удалять. Требует ручного действия в панели Cloudflare, у Claude туда доступа нет
 4. Дальнейшая адаптация сайта — редактировать `cv.json`; при изменении структуры секций — компоненты в `src/components/sections/`
-5. На GitHub осталось несколько уже смёрженных feature-веток (`add-claude-md`, `fix-pnpm-lockfile`, `fix-skills-chips`, `polish-layout`, `setup-github-pages`, `unify-skills-chip-style`, `update-claude-md`, а также старая `claude/project-analysis-2zj6io`) — GitHub не удалил их автоматически после мёржа. Попытка удалить их через git push --delete из сессии заблокирована прокси (403), а в GitHub MCP-инструментах нет tool для удаления веток — удалить вручную через GitHub → Branches
+5. На GitHub осталось несколько уже смёрженных feature-веток (`add-claude-md`, `fix-pnpm-lockfile`, `fix-skills-chips`, `polish-layout`, `setup-github-pages`, `unify-skills-chip-style`, `update-claude-md`, старая `claude/project-analysis-2zj6io`, а также `claude/professional-activity-block-jf5u99`) — GitHub не удалил их автоматически после мёржа. Попытка удалить их через git push --delete из сессии заблокирована прокси (403), а в GitHub MCP-инструментах нет tool для удаления веток — удалить вручную через GitHub → Branches
 6. (опционально) Добавить в Jino запись `www.smnvda.ru` → CNAME `smnvda.github.io`, чтобы убрать предупреждение про www и сайт открывался с www
 7. Решить, возвращать ли кейс **eQMS** в Projects (внедрение на двух площадках, отклонения и CAPA) — пользователь отложил решение, сейчас eQMS не упоминается нигде
 8. При длинных названиях карточек Projects заголовок переносится на две строки, и иконка папки центрируется по вертикали — косметика, унаследованная от шаблона; править только по запросу
@@ -211,4 +223,6 @@ npm run build    # astro check + сборка в dist/
 - Без PR, влито напрямую в master (сессия 2026-08-25, ветка `claude/resume-page-composition-refactor-mtd3dj`, коммиты `fc0d353`, `5996dd9`, `d4c3415`, `a3c9fa1`, `047302f`, `fd96f88`, `c380417`) — композиционная переработка страницы, вертикальный блок контактов, удаление значка ⌘, смена почты на `smnda@yandex.ru`, строка и официальный знак MAX
 - Без PR, влито напрямую в master (сессия 2026-08-25, ветка `claude/professional-activity-block-jf5u99`) — блок «Профессиональная деятельность», см. одноимённый раздел
 - Без PR, влито напрямую в master (сессия 2026-08-25) — содержательная редакция Experience по трём позициям, см. одноимённый раздел
+- Без PR, влито напрямую в master (сессия 2026-08-25, коммиты `7bbbe5f`, `8f4f6a5`) — ссылки на компании, сообщества и учебные заведения; подпись домена Стратоплана
+- Без PR, влито напрямую в master (сессия 2026-08-25, коммиты `bcc32ce`, `e642ae1`) — единый `ExternalLink`, в дополнительном обучении ссылкой стала только школа, см. раздел «Единый компонент внешней ссылки»
 - Без PR, влито напрямую в master (коммит `e46457a`) — фикс мобильной версии: `max-sm:!h-auto` в Experience.astro перебивал `!important`-ом inline-стиль высоты от Alpine `x-collapse`, из-за чего на мобильных "Show more" не сворачивал обязанности/достижения
