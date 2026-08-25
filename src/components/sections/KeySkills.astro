@@ -18,8 +18,8 @@ const SCALE_STEPS = 5;
 							<Fragment>
 								{index > 0 && (
 									<svg class="connector" width="8" height="6" viewBox="0 0 8 6" fill="none" aria-hidden="true">
-										<path d="M0 3h5.4" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
-										<path d="M5 1.5 8 3 5 4.5Z" fill="currentColor" />
+										<path d="M0 3h5.2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" />
+										<path d="M4.8 1.2 8 3 4.8 4.8Z" fill="currentColor" />
 									</svg>
 								)}
 								<span class:list={["task", index < level && "task-active"]} />
@@ -80,9 +80,11 @@ const SCALE_STEPS = 5;
 		background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
 	}
 
+	/* Нейтральный, но заметный: цепочка должна читаться как единый поток.
+	   Цвет — text-muted, подмешанный к text-base, без акцента. */
 	.connector {
 		flex: none;
-		color: color-mix(in srgb, var(--color-text-muted) 60%, transparent);
+		color: color-mix(in srgb, var(--color-text-base) 25%, var(--color-text-muted));
 	}
 
 	.methods {
