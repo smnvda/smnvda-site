@@ -277,8 +277,7 @@
   ],
   "methods": [
     "BPMN",
-    "ArchiMate",
-    "As-Is / To-Be"
+    "ArchiMate"
   ],
   "languages": [
     {
