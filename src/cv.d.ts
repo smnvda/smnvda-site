@@ -7,6 +7,8 @@ export interface CV {
   certificates: Array<Certificates>;
   publications: Array<Publications>;
   skills: Array<Skills>;
+  /** Нотации и подходы: выводятся вторичной строкой под шкалами навыков */
+  methods: Array<string>;
   languages: Array<Languages>;
   interests: Array<Interests>;
   references: Array<References>;
@@ -63,8 +65,8 @@ interface Volunteer {
 
 interface Skills {
   name: string;
-  type: "primary" | "secondary";
-  keywords: Array<string>;
+  /** Уровень владения от 1 до 5 — число закрашенных блоков BPMN-шкалы в KeySkills.astro */
+  level: number;
 }
 
 interface Awards {
