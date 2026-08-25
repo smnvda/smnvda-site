@@ -13,6 +13,8 @@ export interface CV {
   interests: Array<Interests>;
   references: Array<References>;
   projects: Array<Projects>;
+  /** Внешняя профессиональная активность за пределами основной работы: сообщества, конкурсы, публикации */
+  professionalActivities: Array<ProfessionalActivity>;
 }
 
 interface Basics {
@@ -132,6 +134,18 @@ interface Projects {
   highlights: Highlight;
   url: string;
   github?: string;
+}
+
+interface ProfessionalActivity {
+  /** Muted type-label над названием: «Профессиональное сообщество», «Публикация» и т. п. */
+  type: string;
+  title: string;
+  /** Основная роль — выводится полужирным */
+  role: string;
+  /** Произвольная строка периода («июнь 2025 — июнь 2026», «3 года»), не дата */
+  period?: string;
+  description?: string;
+  isbn?: string;
 }
 
 interface Interests {
