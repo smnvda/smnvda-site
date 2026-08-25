@@ -18,6 +18,11 @@ import SwiftUI from "@/icons/swiftui.astro"
 import Kotlin from "@/icons/kotlin.astro"
 import Flutter from "@/icons/flutter.astro"
 
+// Смысловые якоря в текстах размечаются в cv.json как **фрагмент** — опт-ин:
+// строки без разметки рендерятся как раньше, поэтому правило безопасно для всех work[].
+// Возвращает чередующиеся куски: чётные — обычный текст, нечётные — выделенные.
+const splitEmphasis = (text: string) => text.split(/\*\*(.+?)\*\*/)
+
 // Ранний опыт (до 2017) показывается компактнее, чтобы не конкурировать с текущим:
 // меньше заголовок, плотнее блок и нейтральные теги вместо акцентных.
 const EARLY_EXPERIENCE_BEFORE = 2017
@@ -87,13 +92,13 @@ const SKILLS_ICONS: Record<string, any> = {
                   <div class="flex flex-col gap-1">
                     <h4>Кратко:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
-                      {Array.isArray(summary) ? (
-                        summary.map(item => (
-                          {item}
-                        ))
-                      ) : (
-                        <li>{summary}</li>
-                      )}
+                      {(Array.isArray(summary) ? summary : [summary]).map(item => (
+                        <li>
+                          {splitEmphasis(item).map((part, index) => (
+                            index % 2 === 1 ? <span class="font-semibold">{part}</span> : part
+                          ))}
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 )}
@@ -105,7 +110,11 @@ const SKILLS_ICONS: Record<string, any> = {
                     <h4>Зона ответственности:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
                       {responsibilities.map(responsibility => (
-                        <li>{responsibility}</li>
+                        <li>
+                          {splitEmphasis(responsibility).map((part, index) => (
+                            index % 2 === 1 ? <span class="font-semibold">{part}</span> : part
+                          ))}
+                        </li>
                       ))}
                     </ul>
                   </div>
