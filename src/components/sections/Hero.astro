@@ -81,8 +81,10 @@ const contactProfiles = profiles.filter(({ network, url, username }) => network 
 					contactProfiles.map(({ network, username, url }) => {
 						const Icon = SOCIAL_ICONS[network] ?? Contact;
 						const label = contactLabel(network, username);
-						const Tag = url ? "a" : "div";
-						const linkProps = url ? { href: url, target: "_blank", rel: "noopener noreferrer" } : {};
+						// У MAX своей ссылки на профиль нет — строка ведёт на тот же tel:, что и телефон
+						const href = url || (network === "MAX" ? `tel:${phoneHref}` : undefined);
+						const Tag = href ? "a" : "div";
+						const linkProps = href ? (url ? { href, target: "_blank", rel: "noopener noreferrer" } : { href }) : {};
 
 						return (
 							<Tag class="contact" title={`${network}: ${label}`} draggable="false" {...linkProps}>
