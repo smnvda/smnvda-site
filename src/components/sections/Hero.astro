@@ -29,16 +29,19 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(" • ");
 // tel: не любит пробелы и скобки — в ссылке только цифры, на экране номер как в cv.json
 const phoneHref = phone?.replace(/[^+\d]/g, "");
 
-// Профили выводятся username-ом, а не названием сети: Telegram — @username, MAX — "MAX: username".
-// MAX в данных пока нет, поэтому ничего не рендерится — появится сам при добавлении в basics.profiles.
+// Профили выводятся идентификатором, а не названием сети: Telegram — @username,
+// MAX — "MAX: <номер телефона>" (в MAX аккаунт привязан к телефону; если в профиле
+// задан свой username, показывается он).
 const contactLabel = (network: string, username?: string) => {
+	if (network === "MAX") return `MAX: ${username || phone}`;
 	if (!username) return network;
 	if (network === "Telegram") return username.startsWith("@") ? username : `@${username}`;
-	if (network === "MAX") return `MAX: ${username}`;
 	return username;
 };
 
-const contactProfiles = profiles.filter(({ url, username }) => url || username);
+// MAX опознаётся по телефону, поэтому строка выводится и без username — остальным
+// сетям нужен хоть какой-то идентификатор или ссылка, иначе элемент пустой.
+const contactProfiles = profiles.filter(({ network, url, username }) => network === "MAX" ? url || username || phone : url || username);
 ---
 
 <Section>
@@ -78,14 +81,16 @@ const contactProfiles = profiles.filter(({ url, username }) => url || username);
 					contactProfiles.map(({ network, username, url }) => {
 						const Icon = SOCIAL_ICONS[network] ?? Contact;
 						const label = contactLabel(network, username);
+						const Tag = url ? "a" : "div";
+						const linkProps = url ? { href: url, target: "_blank", rel: "noopener noreferrer" } : {};
 
 						return (
-							<a class="contact" href={url} title={`${network}: ${label}`} target="_blank" rel="noopener noreferrer" draggable="false">
+							<Tag class="contact" title={`${network}: ${label}`} draggable="false" {...linkProps}>
 								<span class="contact-icon">
 									<Icon />
 								</span>
 								<span class="contact-value">{label}</span>
-							</a>
+							</Tag>
 						);
 					})
 				}
@@ -197,6 +202,8 @@ const contactProfiles = profiles.filter(({ url, username }) => url || username);
 	}
 
 	footer.contacts .contact {
+		display: inline-flex;
+		align-items: center;
 		width: auto;
 		height: auto;
 		max-width: 100%;
