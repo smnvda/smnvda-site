@@ -20,6 +20,11 @@
         "network": "Telegram",
         "username": "Semenovdmi",
         "url": "https://t.me/Semenovdmi"
+      },
+      {
+        "network": "MAX",
+        "username": "",
+        "url": ""
       }
     ]
   },

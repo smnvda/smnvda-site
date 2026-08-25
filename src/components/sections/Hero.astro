@@ -7,6 +7,7 @@ import X from "@/icons/X.astro";
 import LinkedIn from "@/icons/LinkedIn.astro";
 import GitHub from "@/icons/GitHub.astro";
 import Telegram from "@/icons/Telegram.astro";
+import Max from "@/icons/Max.astro";
 import Contact from "@/icons/Contact.astro";
 import WorldMap from "@/icons/WorldMap.astro";
 import type { SocialIcon } from "@/types";
@@ -19,6 +20,7 @@ const SOCIAL_ICONS: SocialIcon = {
 	LinkedIn,
 	X,
 	Telegram,
+	MAX: Max,
 };
 
 const linkedInfo = profiles.find(({ network }) => network === "LinkedIn");
