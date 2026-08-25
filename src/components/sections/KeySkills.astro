@@ -17,8 +17,9 @@ const SCALE_STEPS = 5;
 						{Array.from({ length: SCALE_STEPS }, (_, index) => (
 							<Fragment>
 								{index > 0 && (
-									<svg class="connector" width="7" height="6" viewBox="0 0 7 6" fill="none" aria-hidden="true">
-										<path d="M0 3h6M4.2 1.4 6 3 4.2 4.6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+									<svg class="connector" width="8" height="6" viewBox="0 0 8 6" fill="none" aria-hidden="true">
+										<path d="M0 3h5.4" stroke="currentColor" stroke-width="1" stroke-linecap="round" />
+										<path d="M5 1.5 8 3 5 4.5Z" fill="currentColor" />
 									</svg>
 								)}
 								<span class:list={["task", index < level && "task-active"]} />
@@ -65,8 +66,8 @@ const SCALE_STEPS = 5;
 	}
 
 	.task {
-		width: 26px;
-		height: 15px;
+		width: 31px;
+		height: 17px;
 		flex: none;
 		border: 1px solid color-mix(in srgb, var(--color-text-muted) 35%, transparent);
 		border-radius: 3px;
@@ -84,10 +85,10 @@ const SCALE_STEPS = 5;
 	}
 
 	.methods {
-		margin-top: 1rem;
+		margin-top: 0.625rem;
 		font-size: 0.75rem;
 		line-height: 1.125rem;
-		color: var(--color-text-muted);
+		color: color-mix(in srgb, var(--color-text-base) 35%, var(--color-text-muted));
 	}
 
 	.methods-label {
