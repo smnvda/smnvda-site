@@ -65,18 +65,19 @@ const SCALE_STEPS = 5;
 		width: fit-content;
 	}
 
+	/* Рамка одинаковая у всех пяти блоков — цепочка всегда читается как 5 шагов
+	   и в светлой, и в тёмной теме. Уровень различается только заливкой. */
 	.task {
 		width: 31px;
 		height: 17px;
 		flex: none;
-		border: 1px solid color-mix(in srgb, var(--color-text-muted) 35%, transparent);
+		border: 1px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
 		border-radius: 3px;
-		background-color: transparent;
+		background-color: color-mix(in srgb, var(--color-text-muted) 10%, transparent);
 	}
 
 	.task-active {
-		border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
-		background-color: color-mix(in srgb, var(--color-accent) 12%, transparent);
+		background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
 	}
 
 	.connector {
