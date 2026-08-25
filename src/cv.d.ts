@@ -148,6 +148,8 @@ interface ProfessionalActivity {
   periodInline?: boolean;
   description?: string;
   isbn?: string;
+  /** Ссылка на сущность: название карточки становится кликабельным */
+  url?: string;
 }
 
 interface Interests {

@@ -7,10 +7,18 @@ import { professionalActivities } from "@cv";
 <Section className={Astro.props.className} title="Профессиональная деятельность">
 	<div class="grid grid-cols-1 gap-3 md:grid-cols-3">
 		{
-			professionalActivities.map(({ type, title, role, period, periodInline, description, isbn }) => (
+			professionalActivities.map(({ type, title, role, period, periodInline, description, isbn, url }) => (
 				<article class="activity ring-skin-muted flex flex-col rounded-md bg-skin-button-muted/50 px-4 py-3 ring-1">
 					<p class="type-label">{type}</p>
-					<h3 class="title">{title}</h3>
+					<h3 class="title">
+						{url ? (
+							<a class="hover:text-skin-hue decoration-dotted underline-offset-[5px] hover:underline" href={url} target="_blank">
+								{title}
+							</a>
+						) : (
+							title
+						)}
+					</h3>
 					{/* Без переноса строки между ролью и периодом: иначе JSX-пробел
 					    даёт точку переноса перед неразрывным пробелом. */}
 					<p class="role">{role}{period && periodInline && <span class="period-inline">{`\u00A0· ${period}`}</span>}</p>
