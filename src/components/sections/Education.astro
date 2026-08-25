@@ -5,7 +5,7 @@ import { education } from "@cv";
 import { certificates } from "@cv";
 ---
 
-<Section className={Astro.props.className} title="Education">
+<Section className={Astro.props.className} title="Образование">
 	<ul class="space-y-4 py-3 print:space-y-0">
 		{
 			education.map(({ institution, startDate, endDate, area, url }) => {
@@ -38,7 +38,7 @@ import { certificates } from "@cv";
 	{
 		certificates.length > 0 && (
 			<>
-				<h4>Certificates</h4>
+				<h4>Дополнительное обучение</h4>
 				<ul class="space-y-4 py-3 print:space-y-0">
 					{certificates.map(({ name, date, issuer, url }) => {
 						const certificateYear = new Date(date).getFullYear();
