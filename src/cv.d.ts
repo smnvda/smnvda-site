@@ -144,6 +144,8 @@ interface ProfessionalActivity {
   role: string;
   /** Произвольная строка периода («июнь 2025 — июнь 2026», «3 года»), не дата */
   period?: string;
+  /** Короткий период выводить в строке роли через «·», а не отдельной строкой */
+  periodInline?: boolean;
   description?: string;
   isbn?: string;
 }

@@ -7,12 +7,14 @@ import { professionalActivities } from "@cv";
 <Section className={Astro.props.className} title="Профессиональная деятельность">
 	<div class="grid grid-cols-1 gap-3 md:grid-cols-3">
 		{
-			professionalActivities.map(({ type, title, role, period, description, isbn }) => (
+			professionalActivities.map(({ type, title, role, period, periodInline, description, isbn }) => (
 				<article class="activity ring-skin-muted flex flex-col rounded-md bg-skin-button-muted/50 px-4 py-3 ring-1">
 					<p class="type-label">{type}</p>
 					<h3 class="title">{title}</h3>
-					<p class="role">{role}</p>
-					{period && <p class="period">{period}</p>}
+					{/* Без переноса строки между ролью и периодом: иначе JSX-пробел
+					    даёт точку переноса перед неразрывным пробелом. */}
+					<p class="role">{role}{period && periodInline && <span class="period-inline">{`\u00A0· ${period}`}</span>}</p>
+					{period && !periodInline && <p class="period">{period}</p>}
 					{description && <p class="note">{description}</p>}
 					{isbn && <p class="note">ISBN {isbn}</p>}
 				</article>
@@ -33,13 +35,19 @@ import { professionalActivities } from "@cv";
 		border-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
 	}
 
-	/* Единственное место с акцентом — маленький type-label над названием. */
+	/* Type-label — вторичный текст, без акцента в обычном состоянии.
+	   Accent появляется только на hover карточки, вместе с рамкой. */
 	.type-label {
 		font-size: 0.6875rem;
 		line-height: 1rem;
 		letter-spacing: 0.02em;
 		font-weight: 500;
-		color: color-mix(in srgb, var(--color-accent) 75%, var(--color-text-muted));
+		color: var(--color-text-muted);
+		transition: color 150ms linear;
+	}
+
+	.activity:hover .type-label {
+		color: color-mix(in srgb, var(--color-accent) 70%, var(--color-text-muted));
 	}
 
 	.title {
@@ -56,6 +64,16 @@ import { professionalActivities } from "@cv";
 		line-height: 1.125rem;
 		font-weight: 600;
 		color: var(--color-text-base);
+	}
+
+	/* Короткий период в строке роли: обычный вес и приглушённый цвет,
+	   чтобы полужирной оставалась только сама роль. Nowrap плюс неразрывный
+	   пробел перед «·» — при переносе «· 3 года» не начинает новую строку,
+	   а уезжает вместе с последним словом роли. */
+	.period-inline {
+		font-weight: 400;
+		color: var(--color-text-muted);
+		white-space: nowrap;
 	}
 
 	.period {
